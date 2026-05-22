@@ -8,7 +8,9 @@ const GEMINI_URL   = `https://generativelanguage.googleapis.com/v1beta/models/${
 export async function POST(request) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    return NextResponse.json({ error: 'GEMINI_API_KEY が設定されていません' }, { status: 500 });
+    return NextResponse.json({
+      error: 'GEMINI_API_KEY が設定されていません。Vercel の Settings → Environment Variables で GEMINI_API_KEY を追加後、Redeploy してください。',
+    }, { status: 500 });
   }
 
   try {
